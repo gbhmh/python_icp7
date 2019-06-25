@@ -5,6 +5,7 @@ from  nltk.stem import WordNetLemmatizer
 from nltk.util import ngrams
 from collections import Counter
 from nltk.stem import SnowballStemmer
+from nltk.stem import LancasterStemmer
 from nltk import wordpunct_tokenize,pos_tag,ne_chunk
 
 
@@ -20,6 +21,10 @@ pStemmer = PorterStemmer()
 for t in wtokens:
   print(t, pStemmer.stem(t.lower()))
 
+lStemmer = LancasterStemmer()
+for t in wtokens:
+  print(t, lStemmer.stem(t.lower()))
+  
 snowball = SnowballStemmer('english')
 for t in wtokens:
   print(t, snowball.stem(t.lower()))
@@ -31,4 +36,5 @@ for t in wtokens:
 trigrams = ngrams(wtokens,3)
 print(Counter(trigrams))
 
+# named entity recognition
 print(ne_chunk(pos_tag(wordpunct_tokenize(file_content))))
